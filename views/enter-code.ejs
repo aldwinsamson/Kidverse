@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgot Password - Enter Code</title>
+<link rel="stylesheet" href="/forgot-password-style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(/forgot-password-bg.svg);
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <form id="codeForm"  method="post">
+            <h2>Enter Code</h2>
+            <label for="code">Enter Code</label>
+            <input type="text" id="code" name="code" required><br>
+            <input type="submit" id="" value="Submit Code">
+        </form> 
+    </div>
+    <script>
+        document.getElementById('codeForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const code = document.getElementById('code').value;
+
+            try {
+                const response = await fetch('/verify-code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    Swal.fire("Verification successful!");
+                    window.location.href="/reset-password";
+                } else {
+                    Swal.fire(`Error: ${result.Status}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to verify code. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Development for 1-3 Years Old</title>
+    <link rel="stylesheet" href="/learning-materials-style.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url(/sd-for-1-3-years-old-bg.svg);
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.go(-1)">
+        <img src="/back-arrow-icon.png" alt="Back">
+    </button> 
+
+    <div class="easy">
+        <a href="https://youtu.be/38y_1EWIE9I?si=yrXonu36LPfLZilv" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=IcUR8NxLdG4" class="lesson-2" style="text-decoration: none;">
+            <button class="disabled"></button>
+        </a>
+        <a href="https://youtu.be/Myf2CUx9E60?si=8ra0ahtaQNLga2P2" class="lesson-3" style="text-decoration: none;">
+            <button class="disabled"></button>
+        </a>
+        <a href="https://www.abcya.com/games/alphabats_rhyming" class="quiz" style="text-decoration: none;">
+            <button class="disabled"></button>
+        </a>
+    </div>
+
+    <div class="medium">
+        <a href="https://youtu.be/WXudxua0IKo?si=yG73jyhE81mkStoP" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=IcUR8NxLdG4" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/qWxk2QFblEE?si=_Wikt_Wo58wDWt7L" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.abcya.com/games/alphabats_alliteration" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <div class="hard">
+        <a href="https://www.youtube.com/watch?v=JkDkJmbdxVQ&pp=ygU6dmlkZW8gc2hvd2luZyBnb29kIGNoYXJhY3RlcmlzdGljIHRvIG90aGVyIHBlb3BsZSBmb3Iga2lkcw%3D%3D" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=cDrG89lGYzo&pp=ygU6dmlkZW8gc2hvd2luZyBnb29kIGNoYXJhY3RlcmlzdGljIHRvIG90aGVyIHBlb3BsZSBmb3Iga2lkcw%3D%3D" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=-nlzjPnNfrU&pp=ygU6dmlkZW8gc2hvd2luZyBnb29kIGNoYXJhY3RlcmlzdGljIHRvIG90aGVyIHBlb3BsZSBmb3Iga2lkcw%3D%3D" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.abcya.com/games/alphabats_syllables" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.easy button');
+        let previousButtonClicked = localStorage.getItem('previousButtonClicked') === 'true';
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                const link = this.parentElement.getAttribute('href');
+                if (link && link !== '') {
+                    window.open(link, '_blank');
+                } else {
+                    event.preventDefault();
+                    console.log('No link available for this button.');
+                }
+            });
+
+            if (index > 0) {
+                button.disabled = true;
+                button.classList.add('disabled');
+            }
+        });
+
+        if (previousButtonClicked) {
+            enableNextButton();
+        }
+
+        document.addEventListener('click', function(event) {
+            const clickedButton = event.target.closest('.easy button');
+            if (clickedButton && !clickedButton.disabled) {
+                const clickedIndex = Array.from(buttons).indexOf(clickedButton);
+                if (clickedIndex >= 0 && clickedIndex < buttons.length - 1) {
+                    const nextButton = buttons[clickedIndex + 1];
+                    nextButton.disabled = false;
+                    nextButton.classList.remove('disabled');
+                }
+                previousButtonClicked = true;
+                localStorage.setItem('previousButtonClicked', true);
+                disableClickedButton(clickedButton);
+            }
+        });
+
+        function enableNextButton() {
+            buttons.forEach((button, index) => {
+                if (index > 0) {
+                    button.disabled = !previousButtonClicked;
+                    if (previousButtonClicked) {
+                        button.classList.remove('disabled');
+                    } else {
+                        button.classList.add('disabled');
+                    }
+                }
+            });
+        }
+
+        function disableClickedButton(clickedButton) {
+            clickedButton.disabled = true;
+            clickedButton.classList.add('disabled');
+        }
+    </script>
+</body>
+</html>

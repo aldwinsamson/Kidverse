@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Emotional Development for 1-3 Years Old</title>
+    <link rel="stylesheet" href="/learning-materials-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(/sed-for-1-3-years-old-bg.svg);
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.go(-1)">
+        <img src="/back-arrow-icon.png" alt="Back">
+    </button>
+
+    <div class="easy">
+        <a href="/sed-easy-lesson1.mp4" class="lesson-1" style="text-decoration: none;">
+            <button id="easy-lesson1" onclick="handleLessonClick('easy-lesson1')" class="disabled"></button>
+        </a>
+        <a href="/sed-easy-lesson2.mp4" class="lesson-2" style="text-decoration: none;">
+            <button id="easy-lesson2" onclick="handleLessonClick('easy-lesson2')" class="disabled"></button>
+        </a>
+        <a href="/sed-easy-lesson3.mp4" class="lesson-3" style="text-decoration: none;">
+            <button id="easy-lesson3" onclick="handleLessonClick('easy-lesson3')" class="disabled"></button>
+        </a>
+        <a href="/sed-easy-quiz1" class="quiz" style="text-decoration: none;">
+            <button id="easy-quiz1" onclick="handleLessonClick('easy-quiz1')" class="disabled"></button>
+        </a>
+    </div>
+
+    <div class="medium">
+        <a href="/sed-medium-lesson1.mp4" class="lesson-1" style="text-decoration: none;">
+            <button id="medium-lesson1" onclick="handleLessonClick('medium-lesson1')" class="disabled"></button>
+        </a>
+        <a href="/sed-medium-lesson2.mp4" class="lesson-2" style="text-decoration: none;">
+            <button id="medium-lesson2" onclick="handleLessonClick('medium-lesson2')" class="disabled"></button>
+        </a>
+        <a href="/sed-medium-lesson3.mp4" class="lesson-3" style="text-decoration: none;">
+            <button id="medium-lesson3" onclick="handleLessonClick('medium-lesson3')" class="disabled"></button>
+        </a>
+        <a href="/sed-medium-quiz2" class="quiz" style="text-decoration: none;">
+            <button id="medium-quiz2" onclick="handleLessonClick('medium-quiz2')" class="disabled"></button>
+        </a>
+    </div> 
+    
+    <div class="hard">
+        <a href="/sed-hard-lesson1.mp4" class="lesson-1" style="text-decoration: none;">
+            <button id="hard-lesson1" onclick="handleLessonClick('hard-lesson1')" class="disabled"></button>
+        </a>
+        <a href="/sed-hard-lesson2.mp4" class="lesson-2" style="text-decoration: none;">
+            <button id="hard-lesson2" onclick="handleLessonClick('hard-lesson2')" class="disabled"></button>
+        </a>
+        <a href="/sed-hard-lesson3.mp4" class="lesson-3" style="text-decoration: none;">
+            <button id="hard-lesson3" onclick="handleLessonClick('hard-lesson3')" class="disabled"></button>
+        </a>
+        <a href="/sed-hard-quiz3" class="quiz" style="text-decoration: none;">
+            <button id="hard-quiz3" onclick="handleLessonClick('hard-quiz3')" class="disabled"></button>
+        </a>
+    </div>
+
+    <button id="score-button" onclick="displayScores()">Score</button>
+    <div id="scores-list"></div>
+
+    <script>
+          function handleLessonClick(buttonId) {
+            // Implementation for handling lesson button clicks, if needed
+        }
+
+        // Fetch the quiz score from the backend
+        fetch('/api/user-progress?userId=123') // Replace with actual userId
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch quiz score');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the quiz score on the page
+                const quizScoreElement = document.getElementById('score-display');
+                quizScoreElement.textContent = `Your score: ${data.quizScore}`;
+            })
+            .catch(error => {
+                console.error('Error fetching quiz score:', error);
+                // Handle errors if necessary
+            });
+
+        // Function to display all scores when the button is clicked
+        function displayScores() {
+            Swal.fire({
+                title: 'Fetching Scores...',
+                text: 'Please wait while we retrieve your scores.',
+                icon: 'info',
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+            
+            fetch('/api/all-user-scores') // Replace with actual API endpoint
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch scores');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Swal.close(); 
+                    const scoresList = document.getElementById('scores-list');
+                    scoresList.innerHTML = '';
+                    data.scores.forEach(score => {
+                        const scoreItem = document.createElement('div');
+                        scoreItem.textContent = `Quiz: ${score.quiz}, Score: ${score.score}`;
+                        scoresList.appendChild(scoreItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching scores:', error);
+                    Swal.fire({
+                        text: 'scores: undefined. please try again later',
+                        icon: 'error'
+                    });
+                });
+        }
+
+        window.onload = function() {
+            Swal.fire("Note: Press the (LESSON) button to access the learning materials.");
+        };
+    </script>
+</body>
+</html>

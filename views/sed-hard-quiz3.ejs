@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Quiz</title>
+    <link rel="stylesheet" href="/sed-hard-quiz3.css">
+    <script src="/path/to/sed-for-1-3-years-old.js"></script>
+    <style>
+        body {
+            background-image: url('/background (1).png'); 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            cursor: url('/custom-cursor.png'), auto; 
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <img id="question-image" class="question-image" src="" alt="Question">
+        <div class="quiz-images" id="quiz-images"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div id="modal-content" class="modal-content">
+            <p id="feedback-text"></p>
+            <button id="modal-button" class="close-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <div id="quiz-container">
+    </div>
+    <div id="score-container" style="display: none;">
+        <p>Your Score: <span id="score-display">0</span></p>
+    </div>
+    
+    <script>
+ const questions = [
+    {
+        questionImg: '/Q1 (1).png',
+        options: [
+            { answer: 'happy', img: 'HAPPY.png' },
+            { answer: 'sad', img: 'SAD.png' },
+            { answer: 'angry', img: 'ANGRY.png' }
+        ],
+        correctAnswer: 'happy'
+    },
+    {
+        questionImg: '/Q2.png',
+        options: [
+            { answer: 'happy', img: 'HAPPY.png' },
+            { answer: 'sad', img: 'SAD.png' },
+            { answer: 'angry', img: 'ANGRY.png' }
+        ],
+        correctAnswer: 'happy'
+    },
+    {
+        questionImg: '/Q3.png',
+        options: [
+            { answer: 'smile', img: 'HAPPY.png' },
+            { answer: 'confused face', img: 'CONFUSED.png' },
+            { answer: 'angry', img: 'ANGRY.png' }
+        ],
+        correctAnswer: 'confused face'
+    },
+    {
+        questionImg: '/Q4.png',
+        options: [
+            { answer: 'confused face', img: 'CONFUSED.png' },
+            { answer: 'happy face', img: 'HAPPY.png' },
+            { answer: 'angry face', img: 'ANGRY.png' }
+        ],
+        correctAnswer: 'confused face'
+    }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function showQuestion() {
+    const question = questions[currentQuestionIndex];
+    document.getElementById('question-image').src = question.questionImg;
+    const quizImages = document.getElementById('quiz-images');
+    quizImages.innerHTML = '';
+    question.options.forEach(option => {
+        const div = document.createElement('div');
+        div.className = 'quiz-image';
+        div.onclick = () => checkAnswer(option.answer);
+        div.innerHTML = `<img src="${option.img}" alt="${option.answer}">`;
+        quizImages.appendChild(div);
+    });
+}
+
+function checkAnswer(selectedAnswer) {
+    const question = questions[currentQuestionIndex];
+    const modal = document.getElementById('myModal');
+    const modalContent = document.getElementById('modal-content');
+    const feedbackText = document.getElementById('feedback-text');
+    const modalButton = document.getElementById('modal-button');
+
+    if (selectedAnswer === question.correctAnswer) {
+        feedbackText.textContent = 'Correct!';
+        modalContent.className = 'modal-content correct';
+        score++;
+    } else {
+        feedbackText.textContent = 'Wrong answer. It is okay! Try again.';
+        modalContent.className = 'modal-content incorrect';
+    }
+
+    modal.style.display = 'block';
+    modalButton.textContent = currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'See Score';
+    modalButton.onclick = function() {
+        closeModal(currentQuestionIndex === questions.length - 1);
+    };
+
+    // Update the score display next to the quiz button
+    document.getElementById('score-display').textContent = `Your score: ${score}`;
+
+    // Save the score to the backend
+    saveUserProgress();
+}
+
+function closeModal(showScore) {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+    if (showScore) {
+        showScoreModal();
+    } else {
+        currentQuestionIndex++;
+        showQuestion();
+    }
+}
+
+function showScoreModal() {
+    const modal = document.getElementById('myModal');
+    const modalContent = document.getElementById('modal-content');
+    const feedbackText = document.getElementById('feedback-text');
+    const modalButton = document.getElementById('modal-button');
+
+    const passScore = 3; // Define pass score
+    const passed = score >= passScore;
+    feedbackText.textContent = `Your score is: ${score}/${questions.length}. ${passed ? "Congratulations, you passed!" : "You didn't pass. Try again!"}`;
+    modalContent.className = 'modal-content score';
+    modalButton.style.display = 'none';
+
+    const actionButtons = document.createElement('div');
+    actionButtons.innerHTML = `
+        ${passed ? '<button class="action-button" onclick="goHome()">Go Home</button>' : ''}
+        <button class="action-button" onclick="retryQuiz()">Try Again</button>
+    `;
+    modalContent.appendChild(actionButtons);
+
+    modal.style.display = 'block';
+}
+
+function goHome() {
+    window.location.href = '/sed-for-1-3-years-old'; // Change this to your homepage URL
+}
+
+function retryQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+    showQuestion();
+}
+
+function saveUserProgress() {
+    const userId = '123'; 
+
+    fetch('/api/save-progress', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId, progress: score })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save progress');
+        }
+        console.log('User progress saved successfully');
+    })
+    .catch(error => {
+        console.error('Error saving user progress:', error);
+    });
+}
+
+showQuestion();
+
+    </script>
+</body>
+</html>

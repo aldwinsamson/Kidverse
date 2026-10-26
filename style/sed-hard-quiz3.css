@@ -1,0 +1,92 @@
+.quiz-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+.question-image {
+    max-width: 580px;
+    height: auto;
+    margin-bottom: 5px;
+}
+.quiz-images {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.quiz-image {
+    max-width: 300px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+.quiz-image:hover {
+    transform: scale(1.1); 
+}
+.quiz-image img {
+    cursor: url('/custom-cursor1.png'), auto;
+    width: 90%;
+    height: auto;
+}
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+    background-color: #9e1287;
+    margin: 30% auto;
+    padding: 20px;
+    border: 1px solid #580b3e;
+    width: 80%; 
+    max-width: 500px; 
+    text-align: center;
+    border-radius: 10px;
+}
+.modal-content.correct {
+    background-color: #c8e6c9; 
+    color: #388e3c; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: bold;
+    font-size: x-large;
+}
+.modal-content.incorrect {
+    background-color: #ffcdd2; 
+    color: #d32f2f; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: bold;
+    font-size: x-large;
+}
+.modal-content.score {
+    background-color: #ca4b95;
+    color: #f3efef;
+    font-family: Arial, sans-serif;
+    font-size: large;
+}
+.close-button {
+    background-color: #871887; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: url('/custom-cursor1.png'), auto;
+    margin-top: 20px;
+}
+.action-button {
+    background-color: #871887; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: url('custom-cursor1.png'), auto;
+    margin: 20px 10px;
+}

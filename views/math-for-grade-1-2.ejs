@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math for Grade 1-2</title>
+    <link rel="stylesheet" href="/learning-materials-style.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url(/math-for-grade-1-2-bg.svg);
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.go(-1)">
+        <img src="/back-arrow-icon.png" alt="Back">
+    </button>
+
+    <div class="eeasy">
+        <a href="https://youtu.be/7J1OkxuyLD0?si=FNAWG85d5e0Qx4S7" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/uQiUTFO78Jk?si=0syF0IMlOSpuoH7h" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ZJEIKkPXirg?si=w-mQV-GPtjNifqWN" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/CNpJWC52yrk?si=Ip-pp_FOQVZlgNCK" class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/6646eb1f2e36bb4ec7878fb3?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <div class="emedium">
+        <a href="https://youtu.be/7J1OkxuyLD0?si=FNAWG85d5e0Qx4S7" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/uQiUTFO78Jk?si=0syF0IMlOSpuoH7h" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ZJEIKkPXirg?si=w-mQV-GPtjNifqWN" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/CNpJWC52yrk?si=Ip-pp_FOQVZlgNCK" class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/6646eb1f2e36bb4ec7878fb3?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <div class="ehard">
+        <a href="https://youtu.be/7J1OkxuyLD0?si=FNAWG85d5e0Qx4S7" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/uQiUTFO78Jk?si=0syF0IMlOSpuoH7h" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ZJEIKkPXirg?si=w-mQV-GPtjNifqWN" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/CNpJWC52yrk?si=Ip-pp_FOQVZlgNCK" class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/6646eb1f2e36bb4ec7878fb3?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.easy button');
+        let previousButtonClicked = localStorage.getItem('previousButtonClicked') === 'true';
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                const link = this.parentElement.getAttribute('href');
+                if (link && link !== '') {
+                    window.open(link, '_blank');
+                } else {
+                    event.preventDefault();
+                    console.log('No link available for this button.');
+                }
+            });
+
+            if (index > 0) {
+                button.disabled = true;
+                button.classList.add('disabled');
+            }
+        });
+
+        if (previousButtonClicked) {
+            enableNextButton();
+        }
+
+        document.addEventListener('click', function(event) {
+            const clickedButton = event.target.closest('.easy button');
+            if (clickedButton && !clickedButton.disabled) {
+                const clickedIndex = Array.from(buttons).indexOf(clickedButton);
+                if (clickedIndex >= 0 && clickedIndex < buttons.length - 1) {
+                    const nextButton = buttons[clickedIndex + 1];
+                    nextButton.disabled = false;
+                    nextButton.classList.remove('disabled');
+                }
+                previousButtonClicked = true;
+                localStorage.setItem('previousButtonClicked', true);
+                disableClickedButton(clickedButton);
+            }
+        });
+
+        function enableNextButton() {
+            buttons.forEach((button, index) => {
+                if (index > 0) {
+                    button.disabled = !previousButtonClicked;
+                    if (previousButtonClicked) {
+                        button.classList.remove('disabled');
+                    } else {
+                        button.classList.add('disabled');
+                    }
+                }
+            });
+        }
+
+        function disableClickedButton(clickedButton) {
+            clickedButton.disabled = true;
+            clickedButton.classList.add('disabled');
+        }
+    </script>
+</body>
+</html>

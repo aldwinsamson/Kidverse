@@ -1,0 +1,261 @@
+.back-button {
+    background: rgb(255, 255, 255);
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+    }
+    
+.back-button img {
+    width: 80px;
+    height: 80px;
+    }
+    
+.back-button:hover img {
+    filter: brightness(100%);
+    }    
+
+   
+.easy {
+    position: absolute;
+    bottom: 5px;
+    left: 10.8%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.easy a {
+    margin: 20px;
+    margin-top: 14.8px;
+}
+
+.easy button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.medium {
+    position: absolute;
+    bottom: 5px;
+    left: 38%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.medium a {
+    margin: 20px;
+    margin-top: 14.8px;
+}
+
+.medium button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hard {
+    position: absolute;
+    bottom: 5px;
+    left: 66%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.hard a {
+    margin: 20px;
+    margin-top: 14.8px;
+}
+
+.hard button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.eeasy {
+    position: absolute;
+    bottom: 5px;
+    left: 10.5%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.eeasy a {
+    margin: 23px;
+    margin-top: 7px;
+}
+
+.eeasy button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.eeasy button:hover {
+    background-color: #F8F9FA;
+}
+
+.emedium {
+    position: absolute;
+    bottom: 5px;
+    left: 38%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.emedium a {
+    margin: 23px;
+    margin-top: 7px;
+}
+
+.emedium button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.emedium button:hover {
+    background-color: #F8F9FA;
+}
+
+.ehard {
+    position: absolute;
+    bottom: 5px;
+    left: 65.8%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 0%;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.ehard a {
+    margin: 23px;
+    margin-top: 7px;
+}
+
+.ehard button {
+    padding: 28px 139px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #ffffff00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ehard button:hover {
+    background-color: #F8F9FA;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+#score-button {
+    position: absolute;
+    top: 60px;
+    right: 85px;
+    padding: 60px 90px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#scores-list {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 250px;
+    width: 100%;
+    display: none; /* Hide by default */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+#scores-list div {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+#lesson-button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

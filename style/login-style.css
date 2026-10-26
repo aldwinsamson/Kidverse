@@ -1,0 +1,76 @@
+.login-container {
+    position: fixed;
+    width: 35%;
+    height: 20%;
+    margin: 50px ;
+    padding: 30px;
+    background:transparent;
+    color: rgb(255, 255, 255);
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #a52faf;
+    background-color: white;
+    border-radius: 100px;
+    outline: none;
+    color: #a52faf;
+}
+.login-container input[type="text"]::placeholder,
+.login-container input[type="password"]::placeholder {
+    color: #a52faf;
+}
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-bottom: 2px solid #fcd116;
+}
+.login-container input[type="submit"] {
+    width: 105%;
+    padding: 10px;
+    border: none;
+    border-radius: 100px;
+    background: linear-gradient(to  right , #8c52ff, #ff914d);
+    color: #fff16f;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.login-container input[type="submit"]:hover {
+    background-color: #fff16f;
+}
+.login-container .fa-lock {
+    color: #3498db;
+}
+.login-container .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.login-container .options a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+.login-container .options a:hover {
+    color: rgb(96, 96, 245);
+}
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.589);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    display: none;
+}
+.swal2-container {
+    z-index: 9999 !important; /* Ensure SweetAlert2 popup is above the blur overlay */
+}

@@ -1,0 +1,46 @@
+
+.container {
+    position: absolute;
+    bottom: 155px;
+    left: 330px;
+    margin: 10px;
+    width: 50%;
+    text-align: center; 
+    margin-bottom: 20px;
+}
+
+.container button {
+    padding: 43px 194px; 
+    border: none;
+    border-radius: 100px;
+    background: transparent;
+    opacity: 40%;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.container button:hover {
+    background-color: #570e47; 
+}
+
+.back-button {
+    background: rgb(255, 255, 255);
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+    }
+    
+    .back-button img {
+    width: 80px;
+    height: 80px;
+    }
+    
+    .back-button:hover img {
+    filter: brightness(100%);
+    }    

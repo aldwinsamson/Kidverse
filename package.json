@@ -1,0 +1,29 @@
+{
+  "name": "kidverse-website",
+  "version": "1.0.0",
+  "description": "Kidverse, an interactive learning website for young students, built with Node.js, Express and MongoDB",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Aldwin Samson",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

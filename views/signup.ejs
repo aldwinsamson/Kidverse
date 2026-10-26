@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link rel="stylesheet" href="/sign-up-style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url(/sign-up-bg.svg);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <form id="signupForm">
+            <label for="studentName">Student's Name:</label>
+            <input type="text" name="studentName" id="studentName" required><br>
+            <label for="schoolId">School ID:</label>
+            <input type="text" name="schoolId" id="schoolId" required><br>
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required><br>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+    <div class="scrollable-container">
+        <h2>Privacy Policy</h2>
+            <p>● Information Collection: We collect personal information for children under 13 with parental
+            consent, ensuring compliance with Philippine data privacy laws and safeguarding the
+            privacy of young users.</p>
+            <p>● Usage of Information: Personal information is solely used to provide services and customize
+            the user experience for children aged 1-7. Non-personal information is utilized for analytics
+            purposes to enhance our services.</p>
+            <p>● Sharing of Information: We do not sell personal information and share it only as mandated
+            by Philippine data privacy laws or to provide services. Non-personal information may be
+            shared with third-party service providers for analytics, adhering to data privacy regulations.</p>
+            <p>● Data Security: While we employ industry-standard security measures to protect personal
+            information, we acknowledge the limitations inherent in online platforms and strive to
+            maintain robust data security practices.</p>
+            <p>● Children's Privacy: We strictly adhere to the Philippine Data Privacy Act and obtain parental
+            consent before collecting personal information from children under 13, ensuring
+            compliance with local regulations and fostering a safe online environment for young users.</p>
+            <p>● Changes to Privacy Policy: Significant changes to our privacy policy will be communicated to
+            parents or guardians in compliance with Philippine data privacy laws, promoting
+            transparency and user awarenes</p>
+        <h2>Terms of Use</h2>
+            <p>● Use of Services: Children aged 1-7 may use KidVerse with parental consent, ensuring
+            compliance with Philippine data privacy regulations and fostering a safe online
+            environment.</p>
+            <p>● User Content: Children are expected to upload appropriate content in adherence to
+            Philippine laws and regulations, promoting positive interactions and respectful behavior.</p>
+            <p>● Intellectual Property: Children must respect copyright laws and refrain from unauthorized
+            use of KidVerse content, in accordance with Philippine intellectual property regulations.</p>
+            <p>● Limitation of Liability: KidVerse provides services "as is" and is not liable for damages
+            arising from use, adhering to Philippine legal standards regarding liability limitations.</p>
+            <p>● Governing Law: These terms are governed by Philippine laws, with any disputes resolved in
+            Philippine courts, ensuring legal clarity and jurisdictional compliance.
+            Parents or guardians allowing their children to use KidVerse agree to adhere to these summarized
+            terms and policies, promoting the safe, secure, and compliant use of the platform for young users
+            aged 1-7 in the Philippines</p>
+        <input type="checkbox" id="agreeCheckbox">
+        <label for="agreeCheckbox">I agree to the terms and conditions</label>
+    </div>
+</div>
+
+<button class="back-button" onclick="window.location.href='/';">
+    <img src="/back-arrow-icon.png" alt="Back">
+</button>
+
+<script>
+    document.getElementById('signupForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        if (!document.getElementById('agreeCheckbox').checked) {
+            Swal.fire('Please agree to the terms and conditions');
+            return; 
+        }
+        try {
+            const response = await fetch('/signup', {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            });
+
+            const responseData = await response.json();
+
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: responseData.message,
+                    icon: 'success'
+                }).then(() => {
+                    window.location.href = '/';
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: responseData.error,
+                    icon: 'error'
+                });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred. Please try again later.',
+                icon: 'error'
+            });
+        }
+    });
+</script>
+</body>
+</html>

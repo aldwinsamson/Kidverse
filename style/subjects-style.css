@@ -1,0 +1,378 @@
+.back-button {
+    background: rgb(255, 255, 255);
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 25px;
+    }
+    
+    .back-button img {
+    width: 80px;
+    height: 80px;
+    }
+    
+    .back-button:hover img {
+    filter: brightness(100%);
+    }    
+
+    a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    
+    .sed {
+        position: absolute;
+        bottom: 103px;
+        left: 103px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .sed button {
+        padding: 169px 174px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity: 40%;
+        font-size: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .sed button:hover {
+        background-color: black; 
+    }
+    
+    .sd {
+        position: absolute;
+        bottom: 103px;
+        left: 512px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .sd button {
+        padding: 169px 171px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity: 40%;
+        font-size: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        text-decoration: none;
+    }
+    
+    .sd button:hover {
+        background-color: black; 
+    }
+    
+    .comingsoon {
+        position: absolute;
+        bottom: 103px;
+        left: 915px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .comingsoon button {
+        padding: 169px 172px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity: 40%;
+        font-size: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        text-decoration: none;
+    }
+    
+    .comingsoon button:hover {
+        background-color: black; 
+    }    
+
+
+    .math {
+        position: absolute;
+        top: 384px;
+        left: 77px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .math button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .math button:hover {
+        background-color: black; 
+    }
+    
+    .science {
+        position: absolute;
+        top: 384px;
+        left: 320px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .science button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .science button:hover {
+        background-color: black; 
+    }
+
+    .ap {
+        position: absolute;
+        top: 384px;
+        left: 565px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .ap button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .ap button:hover {
+        background-color: black; 
+    }
+
+    .values {
+        position: absolute;
+        top: 384px;
+        left: 813px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .values button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .values button:hover {
+        background-color: black; 
+    }
+
+    .more {
+        position: absolute;
+        top: 384px;
+        left: 1060px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .more button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .more button:hover {
+        background-color: black; 
+    }
+
+    .math-grade {
+        position: absolute;
+        top: 384px;
+        left: 77px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .math-grade  button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .math-grade  button:hover {
+        background-color: black; 
+    }
+    
+    .science-grade  {
+        position: absolute;
+        top: 384px;
+        left: 320px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .science-grade  button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .science-grade  button:hover {
+        background-color: black; 
+    }
+
+    .ap-grade  {
+        position: absolute;
+        top: 384px;
+        left: 565px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .ap-grade  button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .ap-grade  button:hover {
+        background-color: black; 
+    }
+
+    .values-grade  {
+        position: absolute;
+        top: 384px;
+        left: 813px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .values-grade  button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .values-grade  button:hover {
+        background-color: black; 
+    }
+
+    .more-grade  {
+        position: absolute;
+        top: 384px;
+        left: 1060px;
+        margin: 0;
+        width: 0%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    
+    .more-grade  button {
+        padding: 192px 114.5px; 
+        border: none;
+        border-radius: 35px;
+        background: transparent;
+        opacity:40%;
+        font-size: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .more-grade  button:hover {
+        background-color: black; 
+    }

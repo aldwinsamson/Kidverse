@@ -1,0 +1,188 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #ffffff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.back-button {
+    background: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+}
+
+.back-button img {
+    width: 60px;
+    height: 62px;
+}
+
+.back-button:hover img {
+    filter: brightness(100%);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.sidebar li a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.sidebar li a:hover {
+    color: #7418f0;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    z-index: 999;
+}
+
+.menu-btn img {
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 200px auto;
+
+    padding: 20px;
+    background-color: transparent;
+}
+
+form {
+    margin-top: 20px;
+    display: none;
+    font-family: 'Bungee' ;
+    font-weight: normal;
+    color: white;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: rgb(0, 0, 0);
+    border-radius: 100px;
+    box-sizing: border-box;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+.user-info label {
+    font-family: 'Bungee';
+    font-weight: normal;
+    color: white;
+    font-size: 25px;
+}
+
+.user-info p {
+    padding: 10px;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.685);
+    font-size: 14px;
+    color: rgb(8, 8, 8); 
+}
+
+#editProfileBtn {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    padding: 15px;
+    border: none;
+    border-radius: 100px;
+    background-color: #fcd116;
+    color: #7418f0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#editProfileBtn:hover {
+    background-color: #8a7411;
+}
+
+.swal2-title {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    font-size: 22px;
+    color: #333; 
+    font-weight: bolder ; 
+    cursor: default; 
+}
+
+.swal2-text {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    font-size: 15px;
+    color: #a09d9d; 
+    font-weight: lighter; 
+    cursor: default; 
+}
+
+.swal2-confirm {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #fff; 
+    background-color: #28a745; 
+    border: none; 
+    padding: 10px 20px; 
+    margin-left: 14px; 
+    cursor: pointer; 
+}
+
+.swal2-cancel {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #fff; 
+    background-color: #dc3545; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+}

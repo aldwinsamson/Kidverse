@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<link rel="stylesheet" href="/about-us-style.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ebeac0;
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="back-button" onclick="toggleSidebar()">
+            <img src="/logo-icon.png" alt="Back">
+        </button>
+        <ul>
+            <li><a href="/homepage"><img src="/home-button-icon.png" alt="Home"> Home</a></li>
+            <li><a href="/enroll"><img src="/enroll-button-con.png" alt="Enroll"> Enroll</a></li>
+            <li><a href="/profile"><img src="/profile-button-icon.png" alt="Profile"> Profile</a></li>
+            <li><a href="/about-us"><img src="/about-us-button-icon.png" alt="About Us"> About Us</a></li>
+            <li><a href="#" onclick="confirmLogout()"><img src="/logout-button-icon.png" alt="Logout"> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-btn" onclick="toggleSidebar()">
+        <img src="/logo-icon.png" alt="Logo" class="logo">
+    </div>
+   
+    <div class="image-container">
+        <img src="/about-us-1.svg" alt="">
+        <img src="/about-us-2.svg" alt="">
+        <img src="/about-us-3.svg" alt="">
+    </div>
+
+    <nav>
+        <a href="mailto:Kidverse@outlook.ph">Kidverse@outlook.ph</a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var sidebarWidth = sidebar.offsetWidth;
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+            } else {
+                sidebar.style.left = '-250px';
+            }
+        }
+
+        function confirmLogout() {
+        const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure you want to log out?",
+            text: "See you again next time!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, logout!",
+            cancelButtonText: "No",
+            reverseButtons: true,
+            padding: '2em',
+            background: '#f8f9fa'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch('/logout', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include' // To include cookies in the request
+        }).then(response => {
+            if (response.ok) {
+                history.pushState(null, null, location.href);
+                window.onpopstate = function () {
+                    history.go(1);
+                    };
+                    window.location.href = "/";
+            } else {
+                    // Handle error if needed
+                    console.error('Logout failed');
+            }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+}
+
+     document.getElementById('logoutButton').addEventListener('click', logout);
+    </script>
+</body>
+</html>

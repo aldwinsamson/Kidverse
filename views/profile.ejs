@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Details</title>
+<link rel="stylesheet" href="/profile-style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(/profile-bg.svg);
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+    }
+</style>
+</head>
+<body>
+    <button id="editProfileBtn" onclick="toggleForm()">Edit Profile</button>
+
+    <div class="container">
+        <div class="user-info" id="userInfo">
+            <label for="name">Name:</label>
+            <p id="displayedName"></p>
+
+            <label for="age">Age:</label>
+            <p id="displayedAge"></p>
+
+            <label for="studentNumber">Student Number:</label>
+            <p id="displayedStudentNumber"></p>
+
+            <label for="email">Email Address:</label>
+            <p id="displayedEmail"></p>
+        </div>
+
+        <form id="profileForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="studentNumber">Student Number:</label>
+            <input type="text" id="studentNumber" name="studentNumber" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </form>
+    </div>
+
+    <div class="sidebar" id="sidebar" style="left: -250px;">
+        <button class="back-button" onclick="toggleSidebar()">
+            <img src="/logo-icon.png" alt="Back">
+        </button>
+        <ul>
+            <li><a href="/homepage"><img src="/home-button-icon.png" alt="Home"> Home</a></li>
+            <li><a href="/enroll"><img src="/enroll-button-con.png" alt="Enroll"> Enroll</a></li>
+            <li><a href="/profile"><img src="/profile-button-icon.png" alt="Profile"> Profile</a></li>
+            <li><a href="/about-us"><img src="/about-us-button-icon.png" alt="About Us"> About Us</a></li>
+            <li><a href="#" onclick="confirmLogout()"><img src="/logout-button-icon.png" alt="Logout"> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-btn" onclick="toggleSidebar()">
+        <img src="/logo-icon.png" alt="Logo" class="logo">
+    </div>
+<script>
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var sidebarWidth = sidebar.offsetWidth;
+    if (sidebar.style.left === '-250px') {
+        sidebar.style.left = '0';
+    } else {
+        sidebar.style.left = '-250px';
+    }
+}
+
+function toggleForm() {
+    var form = document.getElementById('profileForm');
+    var userInfo = document.getElementById('userInfo');
+    var editProfileBtn = document.getElementById('editProfileBtn');
+    if (form.style.display === 'none') {
+        form.style.display = 'block';
+        userInfo.style.display = 'none';
+        editProfileBtn.innerText = 'Save Profile';
+        editProfileBtn.setAttribute('onclick', 'saveProfile()');
+    } else {
+        form.style.display = 'none';
+        userInfo.style.display = 'block';
+        editProfileBtn.innerText = 'Edit Profile';
+        editProfileBtn.setAttribute('onclick', 'toggleForm()');
+    }
+}
+
+function saveProfile() {
+    var formData = new FormData(document.getElementById('profileForm'));
+    var data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    // Retrieve user ID from your authentication system
+    var userId = getUserId();
+    // Save profile data tied to the user's account
+    localStorage.setItem(`profileData_${userId}`, JSON.stringify(data));
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Profile updated successfully!",
+        showConfirmButton: false,
+        timer: 1500
+    });
+    var displayedName = document.getElementById('displayedName');
+    var displayedAge = document.getElementById('displayedAge');
+    var displayedStudentNumber = document.getElementById('displayedStudentNumber');
+    var displayedEmail = document.getElementById('displayedEmail');
+    displayedName.innerText = data.name || 'N/A';
+    displayedAge.innerText = data.age || 'N/A';
+    displayedStudentNumber.innerText = data.studentNumber || 'N/A';
+    displayedEmail.innerText = data.email || 'N/A';
+    toggleForm();
+}
+
+function getUserId() {
+    return 'currentUserId'; 
+}
+
+const profileData = JSON.parse(localStorage.getItem(`profileData_${getUserId()}`)) || {};
+
+// Fill form fields with existing data if available
+document.getElementById('name').value = profileData.name || '';
+document.getElementById('age').value = profileData.age || '';
+document.getElementById('studentNumber').value = profileData.studentNumber || '';
+document.getElementById('email').value = profileData.email || '';
+
+// Fill displayed user info with existing data if available
+document.getElementById('displayedName').innerText = profileData.name || 'N/A';
+document.getElementById('displayedAge').innerText = profileData.age || 'N/A';
+document.getElementById('displayedStudentNumber').innerText = profileData.studentNumber || 'N/A';
+document.getElementById('displayedEmail').innerText = profileData.email || 'N/A';
+
+function confirmLogout() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure you want to log out?",
+        text: "See you again next time!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, logout!",
+        cancelButtonText: "No",
+        reverseButtons: true,
+        padding: '2em', 
+        background: '#f8f9fa'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Clear profile data for the current user's account from localStorage
+            localStorage.removeItem(`profileData_${getUserId()}`);
+            // Redirect to homepage after logout
+            window.location.href = "/";
+        }
+    });
+}
+
+document.getElementById('logoutButton').addEventListener('click', confirmLogout);
+
+</script>
+</body>
+</html>

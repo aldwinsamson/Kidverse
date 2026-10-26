@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araling Panlipunan for Grade 1-2</title>
+    <link rel="stylesheet" href="/learning-materials-style.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url(/ap-for-grade-1-2-bg.svg);
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.go(-1)">
+        <img src="/back-arrow-icon.png" alt="Back">
+    </button>
+    
+    <div class="eeasy">
+        <a href="https://youtu.be/UmnJjfxbzIQ?si=7ApnX7uJhadAgVVc" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ikCtZDrosUU?si=tYKCHhv4rdYBnIzu" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/xMco5XX7aO0?si=hPl5QPsxTKLbDqBf" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=x5LWXwVs71A&pp=ygWwAUFyYWxpbmcgUGFubGlwdW5hbiBOYWlwYW1hbWFsYXMgYW5nIHBhbmltdWxhbmcgcGFnLXVuYXdhIHNhIHBhZ2tpbGFsYSBzYSBzYXJpbGkgYXQgcGFraWtpcGFnLXVnbmF5YW4gc2Ega2Fwd2EgYmlsYW5nIHB1bmRhc3lvbiBzYSBwYWdsaW5hbmcgbmcga2FtYWxheWFuIHNhIGthcGFsaWdpcmFuZyBzb3N5YWwu
+        " class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/664750d1aadd1ba1db33fd0d?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <div class="emedium">
+        <a href="https://youtu.be/UmnJjfxbzIQ?si=7ApnX7uJhadAgVVc" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ikCtZDrosUU?si=tYKCHhv4rdYBnIzu" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/xMco5XX7aO0?si=hPl5QPsxTKLbDqBf" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=x5LWXwVs71A&pp=ygWwAUFyYWxpbmcgUGFubGlwdW5hbiBOYWlwYW1hbWFsYXMgYW5nIHBhbmltdWxhbmcgcGFnLXVuYXdhIHNhIHBhZ2tpbGFsYSBzYSBzYXJpbGkgYXQgcGFraWtpcGFnLXVnbmF5YW4gc2Ega2Fwd2EgYmlsYW5nIHB1bmRhc3lvbiBzYSBwYWdsaW5hbmcgbmcga2FtYWxheWFuIHNhIGthcGFsaWdpcmFuZyBzb3N5YWwu
+        " class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/664750d1aadd1ba1db33fd0d?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <div class="ehard">
+        <a href="https://youtu.be/UmnJjfxbzIQ?si=7ApnX7uJhadAgVVc" class="lesson-1" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/ikCtZDrosUU?si=tYKCHhv4rdYBnIzu" class="lesson-2" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://youtu.be/xMco5XX7aO0?si=hPl5QPsxTKLbDqBf" class="lesson-3" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://www.youtube.com/watch?v=x5LWXwVs71A&pp=ygWwAUFyYWxpbmcgUGFubGlwdW5hbiBOYWlwYW1hbWFsYXMgYW5nIHBhbmltdWxhbmcgcGFnLXVuYXdhIHNhIHBhZ2tpbGFsYSBzYSBzYXJpbGkgYXQgcGFraWtpcGFnLXVnbmF5YW4gc2Ega2Fwd2EgYmlsYW5nIHB1bmRhc3lvbiBzYSBwYWdsaW5hbmcgbmcga2FtYWxheWFuIHNhIGthcGFsaWdpcmFuZyBzb3N5YWwu
+        " class="lesson-4" style="text-decoration: none;">
+            <button></button>
+        </a>
+        <a href="https://quizizz.com/admin/quiz/664750d1aadd1ba1db33fd0d?source=quiz_share" class="quiz" style="text-decoration: none;">
+            <button></button>
+        </a>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.easy button');
+        let previousButtonClicked = localStorage.getItem('previousButtonClicked') === 'true';
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                const link = this.parentElement.getAttribute('href');
+                if (link && link !== '') {
+                    window.open(link, '_blank');
+                } else {
+                    event.preventDefault();
+                    console.log('No link available for this button.');
+                }
+            });
+
+            if (index > 0) {
+                button.disabled = true;
+                button.classList.add('disabled');
+            }
+        });
+
+        if (previousButtonClicked) {
+            enableNextButton();
+        }
+
+        document.addEventListener('click', function(event) {
+            const clickedButton = event.target.closest('.easy button');
+            if (clickedButton && !clickedButton.disabled) {
+                const clickedIndex = Array.from(buttons).indexOf(clickedButton);
+                if (clickedIndex >= 0 && clickedIndex < buttons.length - 1) {
+                    const nextButton = buttons[clickedIndex + 1];
+                    nextButton.disabled = false;
+                    nextButton.classList.remove('disabled');
+                }
+                previousButtonClicked = true;
+                localStorage.setItem('previousButtonClicked', true);
+                disableClickedButton(clickedButton);
+            }
+        });
+
+        function enableNextButton() {
+            buttons.forEach((button, index) => {
+                if (index > 0) {
+                    button.disabled = !previousButtonClicked;
+                    if (previousButtonClicked) {
+                        button.classList.remove('disabled');
+                    } else {
+                        button.classList.add('disabled');
+                    }
+                }
+            });
+        }
+
+        function disableClickedButton(clickedButton) {
+            clickedButton.disabled = true;
+            clickedButton.classList.add('disabled');
+        }
+    </script>
+</body>
+</html>

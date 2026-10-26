@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage</title>
+<link rel="stylesheet" href="/homepage-style.css">
+<style>
+    body {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        background: white;
+        margin: 0;
+        padding: 0; 
+        color: transparent;
+    }
+</style>
+</head>
+<body>
+    <video controls class="butterfly">
+        <source src="/kidverse-butterfly.mp4" type="video/mp4">
+    </video> 
+    <video controls class="tulips">
+        <source src="/kidverse-tulips.mp4" type="video/mp4">
+    </video> 
+    <div class="home">
+        <a href="/homepage"><button>HOME</button></a>
+    </div>
+    <div class="enroll">
+        <a href="/enroll"><button>ENROLL</button></a>
+    </div>
+    <div class="profile">
+        <a href="/profile" style="text-decoration: none;"><button>PROFILE</button></a>
+    </div>
+    <div class="aboutus">
+        <a href="/about-us" style="text-decoration: none;"><button>ABOUT US</button></a>
+    </div>
+    <div class="logout">
+        <a href="#" id="logoutButton" style="text-decoration: none;"><button>Logout</button></a>
+    </div>
+    <div class="games">
+        <a href="/games" style="text-decoration: none;"><button>PLAY</button></a>
+    </div>
+
+    <div class="container">
+        <img class="bg" src="/homepage-bg.svg" alt="">
+        <img class="bg" src="/condition.svg" alt="">
+    </div>
+
+    <nav>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-use">Terms of Use</a>
+    </nav>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function logout() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure you want to log out?",
+        text: "See you again next time!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, logout!",
+        cancelButtonText: "No",
+        reverseButtons: true,
+        padding: '2em',
+        background: '#f8f9fa'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include' // To include cookies in the request
+            }).then(response => {
+                if (response.ok) {
+                    history.pushState(null, null, location.href);
+                    window.onpopstate = function () {
+                        history.go(1);
+                    };
+                    window.location.href = "/";
+                } else {
+                    // Handle error if needed
+                    console.error('Logout failed');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+}
+
+document.getElementById('logoutButton').addEventListener('click', logout);
+
+</script>
+</body>
+</html>
